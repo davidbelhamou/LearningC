@@ -6,4 +6,10 @@ typedef enum {
 	LOG_OUTPUT_POLICY_BOTH = LOG_OUTPUT_POLICY_FILE | LOG_OUTPUT_POLICY_STDOUT
 }LOG_OUTPUT_POLICY;
 
+typedef struct Logger {
+	LOG_OUTPUT_POLICY policy;
+	FILE* ptr_log;
+
+}Logger;
+
 void logger_init(LOG_OUTPUT_POLICY policy);
