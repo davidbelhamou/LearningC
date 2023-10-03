@@ -22,7 +22,7 @@ void now(char* datetime) {
 	return;
 }
 
-void format_date(char* new_format, char* current) {
+char*  format_date(char* current) {
 	const char* months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 	char cur_month[4];
 	int day, year, month;
@@ -38,13 +38,14 @@ void format_date(char* new_format, char* current) {
 		}
 		month++;
 	}
-	char *final_day = day < 9 ? "%02d/" : "%2d/";
-	char *final_month = month < 9 ? "0%02d/" : "%2d/";
+	char *final_day = day <= 9 ? "%02d/" : "%2d/";
+	char *final_month = month <= 9 ? "%02d/" : "%2d/";
 	char final_format[50] = "";
 	strcat(final_format, final_day);
 	strcat(final_format, final_month);
 	strcat(final_format, "%d");
-	sprintf(new_format, final_format, day, month, year);
-	return;
+	char* buffer = (char *)malloc(50);
+	snprintf(buffer, 50, final_format, day, month, year);
+	return buffer;
 
 }

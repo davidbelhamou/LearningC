@@ -6,9 +6,6 @@
 #define max_input 100
 
 int main() {
-	char date_[100];
-	format_date(date_, __DATE__);
-	printf("%s", date_);
 	while (1)
 	{
 		printf("Please enter one of the following command: \n");

@@ -21,4 +21,4 @@ void logger_init(LOG_OUTPUT_POLICY policy);
 void logger_log(char msg[], ...);
 
 // define the main macro
-#define LOG(message, ...) logger_log(message, "%s [%s] %s: line %d: "message, __TIMESTAMP__, __func__, __FILE__, __LINE__ , ##__VA_ARGS__ )
+#define LOG(message, ...) logger_log(message, "%s [%s] %s: line %d: "message, format_date(__DATE__), __func__, __FILE__, __LINE__ , ##__VA_ARGS__ )
