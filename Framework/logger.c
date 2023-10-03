@@ -50,8 +50,12 @@ void logger_log(char msg[], ...) {
 		vprintf(format, args);
 	}
 	else if (Mylogger.policy == LOG_OUTPUT_POLICY_FILE) {
-		
-		vfprintf(Mylogger.ptr_log, format, args);
+		Mylogger.ptr_log = fopen("log/file.log", "a");
+
+		if (Mylogger.ptr_log != NULL) {
+
+			vfprintf(Mylogger.ptr_log, format, args);
+		}
 		
 	}
 	va_end(args);
