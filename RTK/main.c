@@ -32,11 +32,11 @@ int main() {
 			break;
 		}
 		else if ((strcmp(user_input, "LOG_OUTPUT_POLICY_STDOUT | LOG_OUTPUT_POLICY_FILE") == 0) || (strcmp(user_input,"LOG_OUTPUT_POLICY_FILE | LOG_OUTPUT_POLICY_STDOUT") == 0)){
-			logger_init(LOG_OUTPUT_POLICY_FILE || LOG_OUTPUT_POLICY_STDOUT);
+			logger_init(LOG_OUTPUT_POLICY_BOTH);
 			break;
 		}
 		else
-		{
+		{	
 			printf("You did not enter a valid input");
 			continue;
 		}
