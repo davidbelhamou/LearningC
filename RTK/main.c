@@ -1,31 +1,40 @@
 #include<stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
 #include"..\\Framework\logger.h"
-#include<sys/stat.h>
-#include<time.h>
+#include"..\\Framework\utils.h"
+#define max_input 100
 
 int main() {
+	char date_[100];
+	format_date(date_, __DATE__);
+	printf("%s", date_);
 	while (1)
 	{
-		
-		char input[50];
 		printf("Please enter one of the following command: \n");
-		printf("1. quit\n2.(LOG_OUTPUT_POLICY_NONE or LOG_OUTPUT_POLICY_FILE or LOG_OUTPUT_POLICY_STDOUT)");
-		if (strcmp(input, 'quit') == 0) {
+		printf("1. quit\n2.(LOG_OUTPUT_POLICY_NONE or LOG_OUTPUT_POLICY_FILE or LOG_OUTPUT_POLICY_STDOUT)\n");
+		
+
+		char user_input[max_input];
+		get_string_user_input(user_input);
+
+		if (strcmp(user_input, "quit") == 0) {
+			printf("\n Exiting the program\n");
 			exit(0);
 		}
-		else if (strcmp(input, "LOG_OUTPUT_POLICY_NONE")) {
+		else if (strcmp(user_input, "LOG_OUTPUT_POLICY_NONE") == 0) {
 			// do nothing the policy is already in None Mode
 			break;
 		}
-		else if (strcmp(input, "LOG_OUTPUT_POLICY_FILE")) {
+		else if (strcmp(user_input, "LOG_OUTPUT_POLICY_FILE") == 0) {
 			logger_init(LOG_OUTPUT_POLICY_FILE);
 			break;
 		}
-		else if (strcmp(input, "LOG_OUTPUT_POLICY_STDOUT")) {
+		else if (strcmp(user_input, "LOG_OUTPUT_POLICY_STDOUT") == 0) {
 			logger_init(LOG_OUTPUT_POLICY_STDOUT);
 			break;
 		}
-		else if ((strcmp(input, "LOG_OUTPUT_POLICY_STDOUT | LOG_OUTPUT_POLICY_FILE")) || (strcmp(input ,"LOG_OUTPUT_POLICY_FILE | LOG_OUTPUT_POLICY_STDOUT"))){
+		else if ((strcmp(user_input, "LOG_OUTPUT_POLICY_STDOUT | LOG_OUTPUT_POLICY_FILE") == 0) || (strcmp(user_input,"LOG_OUTPUT_POLICY_FILE | LOG_OUTPUT_POLICY_STDOUT") == 0)){
 			logger_init(LOG_OUTPUT_POLICY_FILE || LOG_OUTPUT_POLICY_STDOUT);
 			break;
 		}
@@ -36,4 +45,5 @@ int main() {
 		}
 	
 	}
+	LOG("the function failed");
 }
