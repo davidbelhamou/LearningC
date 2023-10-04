@@ -6,4 +6,4 @@ void get_string_user_input(char* input);
 char* now(char* datetime);
 char* format_date(char* current);
 POLICY_LEVEL getPolicyLevel();
-void getLevelConfig();
+void getLoggerConfigFromUserInput();

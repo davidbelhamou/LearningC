@@ -79,7 +79,7 @@ POLICY_LEVEL getPolicyLevel() {
 	}
 }
 
-void getLevelConfig() {
+void getLoggerConfigFromUserInput() {
 	while (1)
 	{
 		printf("Please enter one of the following command: \n");

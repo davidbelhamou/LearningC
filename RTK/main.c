@@ -6,7 +6,7 @@
 #define max_input 100
 
 int main() {
-	getLevelConfig();
+	getLoggerConfigFromUserInput();
 	LOG("this is a message info\n", LOG_LEVEL_INFO);
 	LOG("this is a message warning\n", LOG_LEVEL_WARNING);
 	LOG("this is a message error\n", LOG_LEVEL_ERROR);
