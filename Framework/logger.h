@@ -8,6 +8,7 @@ typedef enum {
 	LOG_OUTPUT_POLICY_NONE=0,
 	LOG_OUTPUT_POLICY_FILE=1,
 	LOG_OUTPUT_POLICY_STDOUT=1<<1,
+	LOG_OUTPUT_POLICY_BOTH= LOG_OUTPUT_POLICY_FILE | LOG_OUTPUT_POLICY_STDOUT
 }LOG_OUTPUT_POLICY;
 
 
@@ -21,4 +22,4 @@ void logger_init(LOG_OUTPUT_POLICY policy);
 void logger_log(char msg[], ...);
 
 // define the main macro
-#define LOG(message, ...) logger_log(message, "%s [%s] %s: line %d: "message"\n", format_date(__DATE__), __func__, __FILE__, __LINE__ , ##__VA_ARGS__ )
+#define LOG(message, ...) logger_log(message, "%s %s [%s] %s: line %d: "message"\n", format_date(__DATE__), __TIME__, __func__, __FILE__, __LINE__ , ##__VA_ARGS__ )
